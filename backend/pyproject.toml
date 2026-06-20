@@ -45,6 +45,9 @@ testpaths = ["tests"]
 # Dependencies point inward only. Outermost first; domain is innermost and depends on nothing.
 [tool.importlinter]
 root_package = "app"
+# Required because the forbidden contracts below reference external packages
+# (fastapi, sqlalchemy, pydantic, ...).
+include_external_packages = true
 
 [[tool.importlinter.contracts]]
 name = "Clean Architecture layer dependencies"
@@ -54,4 +57,33 @@ layers = [
     "app.adapters",
     "app.application",
     "app.domain",
+]
+
+# domain is the innermost, pure layer: it must not import any web/ORM framework.
+[[tool.importlinter.contracts]]
+name = "domain must be framework-free"
+type = "forbidden"
+source_modules = ["app.domain"]
+forbidden_modules = [
+    "fastapi",
+    "starlette",
+    "sqlalchemy",
+    "pydantic",
+    "pydantic_settings",
+    "uvicorn",
+]
+
+# application depends on domain only: no web framework, no ORM, no Pydantic
+# (input/output validation belongs to adapters/schemas in the strict CA layout).
+[[tool.importlinter.contracts]]
+name = "application must not depend on web or ORM frameworks"
+type = "forbidden"
+source_modules = ["app.application"]
+forbidden_modules = [
+    "fastapi",
+    "starlette",
+    "sqlalchemy",
+    "pydantic",
+    "pydantic_settings",
+    "uvicorn",
 ]
