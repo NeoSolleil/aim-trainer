@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 承認済みの design.md を、順序付きの**作業リスト**に分解する。出力は `specs/<feature>/tasks.md` のみ。
 
+> **実行**: solution-analyst が担当。
+
 > **既存の acceptance.feature を参照・グルーピングするだけ。新しい Gherkin シナリオも要件も作らない。**
 
 ## 最初に参照する

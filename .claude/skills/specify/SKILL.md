@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 承認済みの `discovery.md`（Example Map）を、**機械検証可能な仕様**＝ EARS 要件＋Gherkin シナリオに清書（Formulation）する。**白紙から生成しない**：発見は前段の `discover`（段階0）で済ませ、ここはその成果を formal 化する工程。
 
+> **実行**: scenario-author が担当。
+
 ## 出力（これだけを作る）
 
 - `specs/<feature>/requirements.md` … **EARS 形式の要件**（ルールの台帳）
@@ -39,7 +41,7 @@ disable-model-invocation: true
 ## 手順
 
 1. **discovery.md を読む。** 🔵Rule を EARS 要件、🟢Example を Gherkin シナリオへ対応づける。discovery.md に無いルール／スコープが新たに必要になったら、勝手に足さず `discover` に差し戻す。
-2. **feature フォルダを決める。** `specs/NNNN-kebab-name/`（4桁連番＋ケバブ）。例: `specs/0001-shooting-session/`。
+2. **discover が作成した feature フォルダを使う**（`specs/NNNN-kebab-name/`）。新たに採番・作成しない。
 3. **EARS 要件を書く**（requirements.md）。1要件＝1ルール。下記パターンを使い、各要件に ID（`R-1`, `R-2`…）を振る。曖昧語（速い・適切・十分など）を避け、**測定可能**に書く。
 4. **各要件に Gherkin シナリオをぶら下げる**（acceptance.feature）。1要件につき **正常系・異常系・境界値**を最低1本ずつ。各シナリオに対応要件IDのタグ（`@R-1`）を付ける。
 5. **網羅とトレーサビリティを確認する。**

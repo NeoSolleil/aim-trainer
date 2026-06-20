@@ -9,6 +9,8 @@ disable-model-invocation: true
 
 承認済みの仕様（requirements.md ＋ acceptance.feature）を、実装可能な**設計**に落とす。出力は `specs/<feature>/design.md` のみ。**コードは書かない。**
 
+> **実行**: solution-analyst が担当。
+
 ## 最初に参照する
 
 - `ubiquitous-language` … 用語を設計語彙に揃える。

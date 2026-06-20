@@ -11,6 +11,8 @@ disable-model-invocation: true
 
 これは BDD の **Discovery** 工程。ここで固めた結果を、次の `specify` が EARS＋Gherkin に清書（Formulation）する。
 
+> **実行**: product-analyst・quality-analyst・solution-analyst の3観点（スリーアミーゴス）で並行に草案を出す。各アナリストは**観点を返すだけ**で、**統合と discovery.md への記述は進行役が1箇所で行う**（同じファイルへ同時書き込みしない）。
+
 ## 最初に参照する
 
 - `ubiquitous-language`（用語集）… 用語を揃える。**発見は新しいドメイン用語の主な発生源**なので、新語は用語集への追加を提案する。
@@ -19,6 +21,10 @@ disable-model-invocation: true
 
 - **「誰の・何を・なぜ」を1文で言えること。** 言えないなら、まだ作る段階でない。問い直す。
 - **最小の縦切り（MVP）に絞る。** 「無くても価値が出る」ものは入れない。残りは「対象外」か将来の別機能フォルダへ。
+
+## feature フォルダの採番
+
+機能が定まったら **`specs/NNNN-kebab-name/`**（4桁連番＋ケバブ）を決めて作成し、`discovery.md` をそこに置く。番号は既存 `specs/` の最大＋1。例: `specs/0001-shooting-session/`。**以降の specify / plan / tasks / implement はこの同じフォルダを使う**（再採番しない）。
 
 ## 進め方（Example Mapping）
 
