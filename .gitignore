@@ -52,6 +52,9 @@ Thumbs.db
 *.swp
 *~
 
+# ---- Claude Code（ユーザーローカル設定。共有しない）----
+.claude/settings.local.json
+
 # ---- 再現性: lockfile はコミットする（無視しない） ----
 # uv.lock と package-lock.json は意図的に追跡対象。
 # 万一上のパターンに巻き込まれても確実に追跡されるよう明示的に除外を解除する。
