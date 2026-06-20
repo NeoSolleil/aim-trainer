@@ -1,0 +1,59 @@
+# ---- Python (backend) ----
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.env.*
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Test / coverage / type-check caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# SQLite (local dev DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# ---- Node (frontend) ----
+node_modules/
+# Vite / build output
+frontend/dist/
+dist/
+.vite/
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- Editor / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# ---- 再現性: lockfile はコミットする（無視しない） ----
+# uv.lock と package-lock.json は意図的に追跡対象。
+# 万一上のパターンに巻き込まれても確実に追跡されるよう明示的に除外を解除する。
+!uv.lock
+!package-lock.json
