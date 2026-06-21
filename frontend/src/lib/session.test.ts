@@ -87,6 +87,13 @@ describe("registerClick — hit（R-1/R-2/R-5）", () => {
     expect(next.reactionTimes.every((ms) => ms >= 0)).toBe(true);
   });
 
+  it("小数 now でも reaction_time は整数 ms に丸める（domain/API は int 前提）", () => {
+    const s = makeRunning();
+    const next = registerClick(s, { x: 400, y: 300 }, 487.3, fixedRng);
+    expect(next.reactionTimes).toEqual([487]);
+    expect(Number.isInteger(next.reactionTimes[0])).toBe(true);
+  });
+
   it("hit すると次の的を1つ spawn する（R-5）", () => {
     const s = makeRunning();
     const next = registerClick(s, { x: 400, y: 300 }, 200, fixedRng);

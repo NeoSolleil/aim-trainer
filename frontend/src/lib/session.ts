@@ -119,7 +119,8 @@ export function registerClick(
   }
 
   if (isHit(click.x, click.y, state.target)) {
-    const reactionTime = now - state.target.spawnedAt;
+    // reaction_time は整数 ms（domain/API は int 前提）。performance.now() の小数を丸める。
+    const reactionTime = Math.round(now - state.target.spawnedAt);
     return {
       ...state,
       hits: state.hits + 1,
