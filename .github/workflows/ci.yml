@@ -49,17 +49,8 @@ jobs:
       - name: No raw SQL (ORM only)
         run: bash scripts/check_no_raw_sql.sh
 
-      - name: pytest
-        run: |
-          set +e
-          uv run pytest
-          code=$?
-          # exit 5 = no tests collected. 最初の機能でテストが入るまでは許容する。
-          if [ "$code" -eq 5 ]; then
-            echo "::notice::No tests collected yet (pytest exit 5) — tolerated until the first feature lands."
-            exit 0
-          fi
-          exit "$code"
+      - name: pytest (pytest-bdd 含む)
+        run: uv run pytest
 
   frontend:
     name: frontend (Vite / TypeScript strict)
@@ -90,8 +81,32 @@ jobs:
         run: npm run typecheck
 
       - name: Vitest
-        # テスト未作成のうちは --passWithNoTests で許容（最初の機能で実テストが入る）。
-        run: npm run test -- --passWithNoTests
+        run: npm run test
 
       - name: Vite build
         run: npm run build
+
+  e2e:
+    name: e2e (Playwright / playwright-bdd)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js (LTS)
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies (npm ci)
+        run: npm ci
+
+      - name: Install Playwright browsers (chromium)
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E (playwright-bdd @e2e・原本 acceptance.feature を参照)
+        run: npm run test:e2e
