@@ -6,6 +6,8 @@ coverage/
 playwright-report/
 test-results/
 blob-report/
+# playwright-bdd の生成物（Gherkin → spec。原本は specs/ 側）
+.features-gen/
 
 # Dependency lockfile (managed by npm, not Prettier)
 package-lock.json

@@ -1,3 +1,5 @@
+import { ShootingSessionContainer } from "./components/ShootingSessionContainer";
+
 export function App() {
-  return <h1>Aim Trainer</h1>;
+  return <ShootingSessionContainer />;
 }

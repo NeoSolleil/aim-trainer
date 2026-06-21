@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/*
+ * デザイントークン（役割ベース）。値は src/lib/tokens.ts と一致させること
+ * （Canvas など CSS が効かない描画層は tokens.ts を参照するため）。
+ * 役割名は固定・値は差し替え可能に保つ。スペーシングは Tailwind の 4px グリッドを使う。
+ */
+@theme {
+  --color-primary: #3b82f6;
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}

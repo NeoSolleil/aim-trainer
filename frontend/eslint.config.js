@@ -22,4 +22,17 @@ export default tseslint.config(
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     },
   },
+  {
+    // E2E（Playwright + playwright-bdd）。React ではないため react-hooks ルールは無効化し、
+    // Gherkin の cucumber expression で受け取る未使用の座標引数（_x/_y）は許容する。
+    files: ["e2e/**/*.ts"],
+    rules: {
+      "react-hooks/rules-of-hooks": "off",
+      "no-empty-pattern": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+    },
+  },
 );

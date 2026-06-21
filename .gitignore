@@ -37,6 +37,11 @@ dist/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+# Playwright（frontend スコープ。test-results / report / playwright-bdd 生成物）
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
+frontend/.features-gen/
 
 # Logs
 *.log
@@ -57,6 +62,7 @@ Thumbs.db
 
 # ---- ローカル専用ドキュメント（個人の作業メモ。共有しない）----
 HANDOFF.md
+qiita/
 
 # ---- 再現性: lockfile はコミットする（無視しない） ----
 # uv.lock と package-lock.json は意図的に追跡対象。
